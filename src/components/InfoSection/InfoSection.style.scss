@@ -1,0 +1,31 @@
+@import "../../styles/base/variables.scss";
+@import "../../styles/base/responsiveMixin.scss";
+.info {
+  background: $primary;
+  box-shadow: $mainShadow;
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: 1fr;
+  padding: 3rem;
+
+  @include atMedium {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .btn {
+    display: block;
+    text-align: center;
+    margin: auto;
+  }
+
+  &--out {
+    margin-left: 90%;
+    margin-right: -90%;
+  }
+
+  &--in {
+    margin-left: 0%;
+    margin-right: 0%;
+    transition: all 0.3s ease-in;
+  }
+}

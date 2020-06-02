@@ -1,0 +1,25 @@
+@import "../../styles/base/variables.scss";
+@import "../../styles/base/responsiveMixin.scss";
+
+.portfolio {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+  img {
+    width: 100%;
+    box-shadow: $mainShadow;
+  }
+
+  .img-hide {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+
+  .img-appear {
+    opacity: 1;
+    transform: scale(1);
+
+    transition: all 1s ease-in;
+  }
+}

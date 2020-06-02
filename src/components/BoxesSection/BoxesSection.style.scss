@@ -1,0 +1,44 @@
+@import "../../styles/base/variables.scss";
+@import "../../styles/base/responsiveMixin.scss";
+
+.boxes {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+  .box {
+    background: $primary;
+    text-align: center;
+    padding: 1.5rem 2rem;
+    box-shadow: $mainShadow;
+
+    &-fadeIn {
+      opacity: 0;
+    }
+
+    &-appear {
+      opacity: 1;
+      transition: opacity 1s ease-out;
+    }
+  }
+
+  .box-jump {
+    &:hover {
+      // transform: translate(-50%, -50%);
+      // transition: transform 1s ease-out;
+      animation: jump 0.2s linear alternate;
+    }
+
+    @keyframes jump {
+      0% {
+        transform: scale3d(1, 1, 1);
+      }
+      40% {
+        transform: scale3d(1.05, 1.1, 2) rotate(3deg);
+      }
+      100% {
+        transform: scale3d(1, 1, 1);
+      }
+    }
+  }
+}

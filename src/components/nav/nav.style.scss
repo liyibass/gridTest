@@ -1,0 +1,157 @@
+@import "../../styles/base/variables.scss";
+@import "../../styles/base/responsiveMixin.scss";
+.header {
+  background: #000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-bottom: 30px;
+
+  opacity: 0.9;
+
+  width: 100%;
+  height: 50px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  //children將會推開彼此到最大距離
+
+  .logo-container {
+    margin-left: 30px;
+    margin-top: 2px;
+    display: flex;
+    height: 45px;
+  }
+
+  .option {
+    // margin-right: 20px;
+
+    padding: 10px 15px;
+    position: relative;
+    z-index: 9;
+    cursor: default;
+    color: $mainLight;
+
+    &:hover {
+      transform: scale(1.1);
+      font-weight: 700;
+      transition: all 0.2s ease-out;
+    }
+  }
+
+  // ==========
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    justify-content: space-evenly;
+
+    width: 50%;
+    margin-right: 0px;
+    padding-top: 100px;
+
+    text-align: center;
+    height: 100px;
+
+    position: relative;
+    z-index: 10;
+    opacity: 1;
+
+    right: -250px;
+
+    // cursor: pointer;
+
+    transition: all 0.3s ease-out;
+
+    /*z-index要搭配relative才可以使用*/
+    transform: scale(1.2);
+    padding-bottom: 30px;
+
+    @include atMedium {
+      right: 0px;
+      flex-direction: row;
+      justify-content: flex-end;
+      height: 100%;
+      margin-right: 30px;
+      padding-top: 0;
+      padding-bottom: 0;
+      opacity: 1;
+      z-index: 2;
+      transform: scale(1);
+    }
+    &--is-expanded {
+      background-color: rgba($mainDark, 0.8);
+    }
+
+    &--is-visible {
+      right: 0px;
+      opacity: 1;
+      z-index: 2;
+
+      transform: scale(1);
+    }
+  }
+
+  &__menu-icon {
+    width: 20px;
+    height: 20px;
+
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    display: block;
+
+    z-index: 10;
+
+    &__top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 3px;
+      background-color: white;
+      transform-origin: 0 0;
+    }
+    &__middle {
+      position: absolute;
+      top: 8px;
+      left: 0;
+      width: 20px;
+      height: 3px;
+      background-color: white;
+    }
+    &__bottom {
+      position: absolute;
+      top: 16px;
+      left: 0;
+      width: 20px;
+      height: 3px;
+      background-color: white;
+      transform-origin: 0 100%;
+    }
+
+    div {
+      transition: all 0.3s ease-out;
+    }
+
+    &--close-x {
+      .header__menu-icon__top {
+        transform: rotate(45deg) scaleX(1.25) translateY(-1px);
+      }
+
+      .header__menu-icon__bottom {
+        transform: rotate(-45deg) scaleX(1.25);
+      }
+      .header__menu-icon__middle {
+        opacity: 0;
+      }
+    }
+
+    @include atMedium {
+      display: none;
+    }
+  }
+}
